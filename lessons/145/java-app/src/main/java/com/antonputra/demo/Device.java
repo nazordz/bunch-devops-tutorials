@@ -3,7 +3,7 @@ package com.antonputra.demo;
 public class Device {
     private final String uuid;
     private final String mac;
-    private final String firmware;
+    private String firmware;
 
     public Device(String uuid, String mac, String firmware) {
         this.uuid = uuid;
@@ -21,5 +21,9 @@ public class Device {
 
     public String getFirmware() {
         return firmware;
+    }
+
+    public void setFirmware(String firmware) {
+        this.firmware = firmware;
     }
 }
