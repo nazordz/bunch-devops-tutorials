@@ -74,6 +74,8 @@ export K6_VERSION=0.42.0
 curl -L https://github.com/grafana/k6/releases/download/v$K6_VERSION/k6-v$K6_VERSION-linux-amd64.tar.gz -o k6.tar.gz
 tar -zxf k6.tar.gz
 mv k6-v$K6_VERSION-linux-amd64/k6 /usr/local/bin/
+
+mkdir /opt/tests
 EOF
 
   tags = {
