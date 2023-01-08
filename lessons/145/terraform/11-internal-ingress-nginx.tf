@@ -10,8 +10,8 @@ provider "helm" {
   }
 }
 
-resource "helm_release" "ingress_nginx" {
-  name = "staging"
+resource "helm_release" "internal_ingress_nginx" {
+  name = "internal"
 
   repository       = "https://kubernetes.github.io/ingress-nginx"
   chart            = "ingress-nginx"
