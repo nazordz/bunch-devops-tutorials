@@ -43,4 +43,9 @@ resource "helm_release" "internal_ingress_nginx" {
     name  = "controller.podAnnotations.linkerd\\.io/inject"
     value = "enabled"
   }
+
+  set {
+    name  = "controller.replicaCount"
+    value = "3"
+  }
 }

@@ -148,7 +148,7 @@
                         "uid": "PEB814BE3CA3B78C0"
                     },
                     "editorMode": "code",
-                    "expr": "sum(\n    rate(\n        container_cpu_usage_seconds_total\n        {\n            container_label_io_kubernetes_pod_namespace=~\"$namespace\",\n            image!=\"\", \n            container_label_io_cri_containerd_kind=\"container\"\n        }[1m]\n        )\n    )\nby (\n    container_label_io_kubernetes_pod_name, \n    container_label_io_kubernetes_container_name\n    ) /\nsum(\n    container_spec_cpu_quota\n    {\n        container_label_io_kubernetes_pod_namespace=~\"$namespace\",\n        image!=\"\", \n        container_label_io_cri_containerd_kind=\"container\"\n    } /\n    container_spec_cpu_period\n    {\n        container_label_io_kubernetes_pod_namespace=~\"$namespace\", \n        image!=\"\", \n        container_label_io_cri_containerd_kind=\"container\"\n    }\n    ) \nby (\n    container_label_io_kubernetes_pod_name, \n    container_label_io_kubernetes_container_name\n    )",
+                    "expr": "sum(\n    rate(\n        container_cpu_usage_seconds_total\n        {\n            container_label_io_kubernetes_pod_namespace=~\"staging\",\n            image!=\"\", \n            container_label_io_cri_containerd_kind=\"container\"\n        }[1m]\n        )\n    )\nby (\n    container_label_io_kubernetes_pod_name, \n    container_label_io_kubernetes_container_name\n    ) /\nsum(\n    container_spec_cpu_quota\n    {\n        container_label_io_kubernetes_pod_namespace=~\"staging\",\n        image!=\"\", \n        container_label_io_cri_containerd_kind=\"container\"\n    } /\n    container_spec_cpu_period\n    {\n        container_label_io_kubernetes_pod_namespace=~\"staging\",\n        image!=\"\", \n        container_label_io_cri_containerd_kind=\"container\"\n    }\n    ) \nby (\n    container_label_io_kubernetes_pod_name, \n    container_label_io_kubernetes_container_name\n    )",
                     "legendFormat": "{{ container_label_io_kubernetes_container_name }}",
                     "range": true,
                     "refId": "A"
@@ -335,7 +335,7 @@
                         "uid": "PEB814BE3CA3B78C0"
                     },
                     "editorMode": "code",
-                    "expr": "sum(\n    rate(\n        container_cpu_usage_seconds_total\n        {\n            container_label_io_kubernetes_pod_name=~\"$pod\", \n            container_label_io_kubernetes_container_name=~\"$container\", \n            container_label_io_kubernetes_pod_namespace=~\"$namespace\", \n            image!=\"\", \n            container_label_io_cri_containerd_kind=\"container\"\n            }[1m]\n        )\n    ) \nby (\n    container_label_io_kubernetes_pod_name, \n    container_label_io_kubernetes_container_name\n    )",
+                    "expr": "sum(\n    rate(\n        container_cpu_usage_seconds_total\n        {\n            container_label_io_kubernetes_pod_namespace=~\"staging\",\n            container_label_io_kubernetes_container_name=~\"java-app|go-app\", \n            image!=\"\", \n            container_label_io_cri_containerd_kind=\"container\"\n            }[1m]\n        )\n    ) \nby (\n    container_label_io_kubernetes_pod_name, \n    container_label_io_kubernetes_container_name\n    )",
                     "legendFormat": "{{ container_label_io_kubernetes_container_name }}",
                     "range": true,
                     "refId": "A"
@@ -346,7 +346,7 @@
                         "uid": "PEB814BE3CA3B78C0"
                     },
                     "editorMode": "code",
-                    "expr": "avg(\n    kube_pod_container_resource_limits\n    {\n        exported_pod=~\"$pod\",\n        exported_namespace=~\"$namespace\", \n        exported_container=~\"$container\",\n        unit=\"core\"\n    })",
+                    "expr": "avg(\n    kube_pod_container_resource_limits\n    {\n        exported_namespace=~\"staging\", \n        exported_container=~\"go-app|java-app\",\n        unit=\"core\"\n    })",
                     "hide": false,
                     "legendFormat": "Limit",
                     "range": true,
@@ -358,7 +358,7 @@
                         "uid": "PEB814BE3CA3B78C0"
                     },
                     "editorMode": "code",
-                    "expr": "avg(\n    kube_pod_container_resource_requests\n    {\n        exported_pod=~\"$pod\",\n        exported_namespace=~\"$namespace\", \n        exported_container=~\"$container\",\n        unit=\"core\"\n    })",
+                    "expr": "avg(\n    kube_pod_container_resource_requests\n    {\n        exported_namespace=~\"staging\", \n        exported_container=~\"go-app|java-app\",\n        unit=\"core\"\n    })",
                     "hide": false,
                     "legendFormat": "Request",
                     "range": true,
@@ -488,7 +488,7 @@
                         "uid": "PEB814BE3CA3B78C0"
                     },
                     "editorMode": "code",
-                    "expr": "rate(\n    container_cpu_cfs_throttled_seconds_total\n    {\n        container_label_io_kubernetes_pod_namespace=~\"$namespace\",\n        container_label_io_cri_containerd_kind=\"container\",\n        image!=\"\"\n    }[1m])",
+                    "expr": "rate(\n    container_cpu_cfs_throttled_seconds_total\n    {\n        container_label_io_kubernetes_pod_namespace=~\"staging\",\n        container_label_io_cri_containerd_kind=\"container\",\n        image!=\"\"\n    }[1m])",
                     "legendFormat": "{{ container_label_io_kubernetes_container_name }}",
                     "range": true,
                     "refId": "A"
@@ -503,98 +503,7 @@
     "style": "dark",
     "tags": [],
     "templating": {
-        "list": [
-            {
-                "current": {
-                    "selected": false,
-                    "text": "staging",
-                    "value": "staging"
-                },
-                "datasource": {
-                    "type": "prometheus",
-                    "uid": "PEB814BE3CA3B78C0"
-                },
-                "definition": "label_values(container_cpu_usage_seconds_total, container_label_io_kubernetes_pod_namespace)",
-                "hide": 0,
-                "includeAll": true,
-                "multi": false,
-                "name": "namespace",
-                "options": [],
-                "query": {
-                    "query": "label_values(container_cpu_usage_seconds_total, container_label_io_kubernetes_pod_namespace)",
-                    "refId": "StandardVariableQuery"
-                },
-                "refresh": 1,
-                "regex": "",
-                "skipUrlSync": false,
-                "sort": 0,
-                "type": "query"
-            },
-            {
-                "current": {
-                    "selected": true,
-                    "text": [
-                        "go-app-5fb784cfb-wl6gz",
-                        "java-app-7cd9cb66db-x6xgg"
-                    ],
-                    "value": [
-                        "go-app-5fb784cfb-wl6gz",
-                        "java-app-7cd9cb66db-x6xgg"
-                    ]
-                },
-                "datasource": {
-                    "type": "prometheus",
-                    "uid": "PEB814BE3CA3B78C0"
-                },
-                "definition": "label_values(container_cpu_usage_seconds_total{container_label_io_kubernetes_pod_namespace=~\"$namespace\"}, container_label_io_kubernetes_pod_name)",
-                "hide": 0,
-                "includeAll": false,
-                "multi": true,
-                "name": "pod",
-                "options": [],
-                "query": {
-                    "query": "label_values(container_cpu_usage_seconds_total{container_label_io_kubernetes_pod_namespace=~\"$namespace\"}, container_label_io_kubernetes_pod_name)",
-                    "refId": "StandardVariableQuery"
-                },
-                "refresh": 1,
-                "regex": "",
-                "skipUrlSync": false,
-                "sort": 0,
-                "type": "query"
-            },
-            {
-                "current": {
-                    "selected": true,
-                    "text": [
-                        "go-app",
-                        "java-app"
-                    ],
-                    "value": [
-                        "go-app",
-                        "java-app"
-                    ]
-                },
-                "datasource": {
-                    "type": "prometheus",
-                    "uid": "PEB814BE3CA3B78C0"
-                },
-                "definition": "label_values(container_cpu_usage_seconds_total{container_label_io_kubernetes_pod_name=~\"$pod\"}, container_label_io_kubernetes_container_name)",
-                "hide": 0,
-                "includeAll": false,
-                "multi": true,
-                "name": "container",
-                "options": [],
-                "query": {
-                    "query": "label_values(container_cpu_usage_seconds_total{container_label_io_kubernetes_pod_name=~\"$pod\"}, container_label_io_kubernetes_container_name)",
-                    "refId": "StandardVariableQuery"
-                },
-                "refresh": 1,
-                "regex": "",
-                "skipUrlSync": false,
-                "sort": 0,
-                "type": "query"
-            }
-        ]
+        "list": []
     },
     "time": {
         "from": "now-15m",
@@ -604,6 +513,6 @@
     "timezone": "",
     "title": "CPU Usage",
     "uid": "5GC2mDdVk",
-    "version": 9,
+    "version": 10,
     "weekStart": ""
 }

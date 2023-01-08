@@ -1,4 +1,12 @@
 ## mentioned
+###### LESSON do not rely sole on CPU and memory usage, your APP can degrade way before it reach 100%, measure golden signals
+###### lesson evry devops should learn (load test your applicatin and detemine the treshhold whne you app will degraded and use them to autoscale do not use CPU oe memory)
+###### very important lesson each devops or sre should learn
+
+lesson to load test all together and measure golen signals as close to client as posible
+if latency goes up it doesn't mean neccacary problem in the app it can be in ingress pods (they have to handle spikes in load and must be load tested along with application)
+a lot of moving parts in k8s hard to debug and pintpoint the issue, it maybe problem in infra component not nessaary in your app. Espeasially when using meshes
+
 k8s quality of service classes
 talk about public and private ingresses and dns (route53)
 explain how to expose services and cname records (show in aws consule private and public load balancers)

@@ -26,10 +26,10 @@ spec:
           resources:
             requests:
               memory: 1Gi
-              cpu: 1000m
+              cpu: 200m
             limits:
               memory: 1Gi
-              cpu: 1000m
+              cpu: 200m
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -40,6 +40,11 @@ spec:
                     values:
                       - go-app
                       - java-app
+                  - key: app.kubernetes.io/name
+                    operator: In
+                    values:
+                      - ingress-nginx
               topologyKey: "kubernetes.io/hostname"
               namespaces:
                 - staging
+                - ingress-nginx
