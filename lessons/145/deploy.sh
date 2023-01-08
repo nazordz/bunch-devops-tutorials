@@ -23,3 +23,4 @@ kubectl apply -f linkerd/dashboard.yaml
 # Deploy Applications
 
 kubectl apply -f java-app/deploy
+kubectl apply -f go-app/deploy
