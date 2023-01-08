@@ -15,7 +15,7 @@ export const options = {
     },
 };
 
-const url = "http://java-app.antonputra.pvt/api/devices"
+const url = "http://java.antonputra.pvt/api/devices"
 
 export default () => {
 

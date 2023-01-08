@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: internal-ingress-nginx
   rules:
-    - host: api-java.antonputra.pvt
+    - host: java.antonputra.pvt
       http:
         paths:
           - path: /

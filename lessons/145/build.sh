@@ -13,8 +13,8 @@ TARGET_PLATFORM="${TARGET_PLATFORM:-linux/amd64}"
 aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${ACC}.dkr.ecr.${REGION}.amazonaws.com
 
 # go-app
-# docker build -t ${ACC}.dkr.ecr.${REGION}.amazonaws.com/go-app:${VER} --platform ${TARGET_PLATFORM} go-app
-# docker push ${ACC}.dkr.ecr.${REGION}.amazonaws.com/go-app:${VER}
+docker build -t ${ACC}.dkr.ecr.${REGION}.amazonaws.com/go-app:${VER} --platform ${TARGET_PLATFORM} go-app
+docker push ${ACC}.dkr.ecr.${REGION}.amazonaws.com/go-app:${VER}
 
 # java-app
 docker build -t ${ACC}.dkr.ecr.${REGION}.amazonaws.com/java-app:${VER} --platform ${TARGET_PLATFORM} java-app
