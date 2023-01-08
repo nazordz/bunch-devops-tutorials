@@ -2,6 +2,7 @@
 k8s quality of service classes
 talk about public and private ingresses and dns (route53)
 explain how to expose services and cname records (show in aws consule private and public load balancers)
+mentioned that you can manage DNS using ingress itself wihout terraform
 combine visual graphics with code
 talk about linkerd
 

@@ -1,6 +1,6 @@
 locals {
   private_route53_zone = "antonputra.pvt"
-  private_ingress      = "ae2d319782afc46169467cae1b8ba7d5-f967f6a708796a0d.elb.us-east-1.amazonaws.com"
+  private_ingress      = "ab7b5bf884b0143dca27aab163ed842f-83cd3df3721690b6.elb.us-east-1.amazonaws.com"
 }
 
 

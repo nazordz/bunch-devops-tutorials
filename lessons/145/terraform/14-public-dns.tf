@@ -1,6 +1,6 @@
 locals {
   public_route53_zone = "antonputra.com"
-  public_ingress      = "ae2d319782afc46169467cae1b8ba7d5-f967f6a708796a0d.elb.us-east-1.amazonaws.com"
+  public_ingress      = "a6ec3fe771a23431ab7d77ae07551612-226e2f5dcac6973f.elb.us-east-1.amazonaws.com"
 }
 
 data "aws_route53_zone" "public" {
