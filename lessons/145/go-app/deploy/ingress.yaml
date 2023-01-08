@@ -2,12 +2,12 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: api
+  name: api-go
   namespace: staging
 spec:
   ingressClassName: internal-ingress-nginx
   rules:
-    - host: api.antonputra.pvt
+    - host: api-go.antonputra.pvt
       http:
         paths:
           - path: /

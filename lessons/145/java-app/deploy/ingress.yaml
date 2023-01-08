@@ -1,0 +1,19 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-java
+  namespace: staging
+spec:
+  ingressClassName: internal-ingress-nginx
+  rules:
+    - host: api-java.antonputra.pvt
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: java-app
+                port:
+                  number: 8080

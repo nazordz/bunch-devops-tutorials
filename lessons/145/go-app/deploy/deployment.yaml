@@ -21,10 +21,6 @@ spec:
           ports:
             - name: http
               containerPort: 8080
-          volumeMounts:
-            - name: config
-              mountPath: /config.yaml
-              subPath: config.yaml
           resources:
             requests:
               memory: 128Mi
@@ -41,6 +37,7 @@ spec:
                     operator: In
                     values:
                       - go-app
+                      - java-app
               topologyKey: "kubernetes.io/hostname"
               namespaces:
                 - staging
