@@ -46,3 +46,9 @@ k exec -it java-app-6848fdbbcd-xjj26 -c java-app -- sh
 java -XX:+PrintFlagsFinal -version | grep -E "UseContainerSupport | InitialRAMPercentage | MaxRAMPercentage | MinRAMPercentage"
 
 java -XshowSettings:vm -version
+
+
+## Tests
+
+k6 run java-app-1.js
+k6 run go-app-1.js

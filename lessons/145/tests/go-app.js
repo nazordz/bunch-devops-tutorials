@@ -7,9 +7,9 @@ export const options = {
             executor: 'ramping-vus',
             startVUs: 1,
             stages: [
-                { target: 20, duration: '30s' }, // linearly go from 3 VUs to 20 VUs for 30s
-                { target: 100, duration: '0' }, // instantly jump to 100 VUs
-                { target: 100, duration: '1m' }, // continue with 100 VUs for 10 minutes
+                { target: 100, duration: '5m' },
+                { target: 500, duration: '0' },
+                { target: 500, duration: '5m' },
             ],
         },
     },
