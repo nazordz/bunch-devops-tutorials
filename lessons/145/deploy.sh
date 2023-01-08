@@ -18,6 +18,7 @@ kubectl apply -R -f monitoring
 # Install Service Meash (Linkerd)
 
 kubectl apply -f linkerd/linkerd-core.yaml
+kubectl apply -f linkerd/dashboard.yaml
 
 # Deploy Applications
 

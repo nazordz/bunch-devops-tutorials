@@ -4,6 +4,8 @@ kind: Ingress
 metadata:
   name: api-java
   namespace: staging
+  annotations:
+    nginx.ingress.kubernetes.io/service-upstream: "true"
 spec:
   ingressClassName: internal-ingress-nginx
   rules:
