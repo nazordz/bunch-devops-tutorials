@@ -1,4 +1,4 @@
-#!/bi/bash
+#!/bin/bash
 
 set -ex
 
@@ -7,3 +7,9 @@ set -ex
 kubectl create -f prometheus-operator-crd
 
 # Create Kubernetes Namespaces
+
+kubectl apply -f namespaces
+
+# Deploy Monitoring Components
+
+kubectl apply -R -f monitoring
