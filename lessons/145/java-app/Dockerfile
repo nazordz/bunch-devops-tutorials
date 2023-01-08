@@ -1,4 +1,5 @@
-FROM amazoncorretto:19.0.1-alpine3.16 as builder
+# FROM amazoncorretto:19.0.1-alpine3.16 as builder
+FROM amazoncorretto:19.0.1 as builder
 
 WORKDIR /app
  
@@ -10,7 +11,8 @@ COPY src src
 
 RUN ./gradlew clean build
 
-FROM amazoncorretto:19.0.1-alpine3.16
+# FROM amazoncorretto:19.0.1-alpine3.16
+FROM amazoncorretto:19.0.1
 
 COPY --from=builder /app/build/libs/*.jar /app/java-app.jar
 
