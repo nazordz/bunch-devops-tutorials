@@ -197,7 +197,7 @@
                             "mode": "off"
                         }
                     },
-                    "decimals": 1,
+                    "decimals": 3,
                     "mappings": [],
                     "thresholds": {
                         "mode": "absolute",
